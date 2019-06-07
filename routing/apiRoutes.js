@@ -7,11 +7,11 @@ module.exports = function(expressRef, pathRef) {
     return res.json(potentialFriends);
   });
   expressRef.post("/api/friends", function(req, res) {
-    var newFriend = req.body;
-    console.log(newFriend);
-    friendFinder(newFriend.scores, potentialFriends);
+    var userInfo = req.body;
+    console.log(userInfo);
+    var newFriend = friendFinder(userInfo.scores, potentialFriends);
     // need to add newFriend after checking for a match so it doesn't find itself
-    potentialFriends.push(newFriend);
-    res.json(newFriend); // <- why don't need to put above the push?
+    potentialFriends.push(userInfo);
+    res.json(newFriend);
   });
 };

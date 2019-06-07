@@ -14,7 +14,7 @@ module.exports = function(newScores, potentialFriendsArray) {
       bestFriendDifference = newDifference;
     }
   }
-  console.log(bestFriendIndex);
+  return potentialFriendsArray[bestFriendIndex];
 };
 function checkDifference(newScores, potentialScores) {
   console.log(newScores);

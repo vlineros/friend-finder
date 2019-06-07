@@ -89,26 +89,46 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-      $("#submit-button").on("click", event => {
-        event.preventDefault();
-        var scores = [];
-        for (let i = 1; i < 11; i++) {
-          newAnswer = $("input[name=q" + i + "]:checked").val();
-          parseInt(newAnswer);
-          scores.push(newAnswer);
-        }
-        var newFriend = {
-          name: $("#name")
-            .val()
-            .trim(),
-          picture: $("#photo")
-            .val()
-            .trim(),
-          scores: scores
-        };
-        $.post("/api/friends", newFriend).then(function(data) {
-          console.log("survey.html", data);
-          alert("Adding Friend...");
+      $(document).ready(function() {
+        $("#submit-button").on("click", event => {
+          event.preventDefault();
+          var scores = [];
+          for (let i = 1; i < 11; i++) {
+            newAnswer = $("input[name=q" + i + "]:checked").val();
+            parseInt(newAnswer);
+            scores.push(newAnswer);
+          }
+          var newFriend = {
+            name: $("#name")
+              .val()
+              .trim(),
+            picture: $("#photo")
+              .val()
+              .trim(),
+            scores: scores
+          };
+          $.post("/api/friends", newFriend).then(function(data) {
+            console.log("survey.html", data);
+
+            alert("Adding Friend...");
+          });
+          // .then(function() {
+          //   $.get("/survey", function(data) {
+          //     console.log(data);
+          //     // if (data) {
+          //     //   $("#stats").show();
+          //     //   $("#name").text(data.name);
+          //     //   $("#role").text(data.role);
+          //     //   $("#age").text(data.age);
+          //     //   $("#force-points").text(data.forcePoints);
+          //     // } else {
+          //     //   $("#name").text(
+          //     //     "Something went wrong, sorry you have no friends..."
+          //     //   );
+          //     //   $("#stats").hide();
+          //     // }
+          //   });
+          // });
         });
       });
     </script>
