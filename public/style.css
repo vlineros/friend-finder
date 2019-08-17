@@ -29,10 +29,6 @@ form {
   font-size: 125%;
 }
 img {
-  max-width: 30%;
-  max-height: 30%;
-}
-#modal {
-  max-height: 50vh;
-  max-width: 50vw;
+  max-width: 60%;
+  max-height: 60%;
 }
